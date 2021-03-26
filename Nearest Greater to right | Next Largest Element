@@ -8,34 +8,34 @@ void solve(int arr[], int size)
     
     for(int i=size-1; i>=0; i--)
     {
-        if(s.size() == 0)
+        if(s.size() == 0)                              //When stack is empty we push -1 in vector
         {
             v.push_back(-1);
         }
-        else if(s.size()>0 && s.top()>arr[i])
+        else if(s.size()>0 && s.top()>arr[i])          //When stack is not empty AND top is greater then No. we push top in vector
         {
             v.push_back(s.top());
         }
-        else if (s.size()>0 && s.top()<=arr[i])
+        else if (s.size()>0 && s.top()<=arr[i])   //When stack is not empty AND top is smaller then No. then we pop element from stack until stack is empty or we find top > vector
         {
-            while(s.size()>0 && s.top()<=arr[i])
+            while(s.size()>0 && s.top()<=arr[i])       
             {
-                s.pop();
+                s.pop();                      
             }
-            if(s.size()==0)
+            if(s.size()==0)                            //if this condition is True then we find that popping is stop because stack is empty and we push -1 in vector.
             {
                 v.push_back(-1);
             }
-            else if(s.top()>arr[i])
+            else if(s.top()>arr[i])                  //and if this condition is True then we find that popping is stop because top is greater then No. and we push top in vector.
             {
                 v.push_back(s.top());
             }  
         }
-        s.push(arr[i]);
+        s.push(arr[i]);                               //here we push No. in stack from array after comparison.
     }
-    reverse(v.begin(), v.end());
+    reverse(v.begin(), v.end());                      //here we have to reverse the vector to get answer in correct form because we started our array from last element.
     
-    for(int x:v)
+    for(int x:v)                                      //printing output vector
     {
         cout<<x<<" ";
     }
